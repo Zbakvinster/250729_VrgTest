@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\GIT\250729_VrgTest\entt-master\entt-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GIT\250729_VrgTest\VrgTest;D:\GIT\250729_VrgTest\entt-master\entt-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -129,7 +129,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Systems\BulletEndCondition\BulletEndConditionSystem.cpp" />
+    <ClCompile Include="Systems\DeadBulletSolver\DeadBulletSolverSystem.cpp" />
+    <ClCompile Include="Systems\Drag\DragForceSystem.cpp" />
+    <ClCompile Include="Systems\Gravity\GravitySystem.cpp" />
+    <ClCompile Include="Systems\Physics\PhysicsSystem.cpp" />
+    <ClCompile Include="Systems\Simulation\SimulationSystem.cpp" />
+    <ClCompile Include="Systems\TargetMinDistanceCheck\TargetMinDistanceCheckSystem.cpp" />
+    <ClCompile Include="Systems\VelocityApplier\VelocityApplierSystem.cpp" />
     <ClCompile Include="VrgTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Components\ActiveBullet.hpp" />
+    <ClInclude Include="Components\ActiveSimulation.hpp" />
+    <ClInclude Include="Components\Angle.hpp" />
+    <ClInclude Include="Components\DeadBullet.hpp" />
+    <ClInclude Include="Components\Mass.hpp" />
+    <ClInclude Include="Components\MinDistance.hpp" />
+    <ClInclude Include="Components\Position.hpp" />
+    <ClInclude Include="Components\SimulationData.hpp" />
+    <ClInclude Include="Components\Velocity.hpp" />
+    <ClInclude Include="Core\Maths.hpp" />
+    <ClInclude Include="Systems\BulletEndCondition\BulletEndConditionSystem.hpp" />
+    <ClInclude Include="Systems\DeadBulletSolver\DeadBulletSolverSystem.hpp" />
+    <ClInclude Include="Systems\Drag\DragForceSystem.hpp" />
+    <ClInclude Include="Systems\Gravity\GravitySystem.hpp" />
+    <ClInclude Include="Systems\Physics\PhysicsSystem.hpp" />
+    <ClInclude Include="Systems\Simulation\SimulationSystem.hpp" />
+    <ClInclude Include="Systems\TargetMinDistanceCheck\TargetMinDistanceCheckSystem.hpp" />
+    <ClInclude Include="Systems\VelocityApplier\VelocityApplierSystem.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
