@@ -14,7 +14,7 @@
 constexpr unsigned int maxActiveBullets = 10; // Maximum number of active bullets in the simulation
 constexpr double minDistanceImprovementThreshold = 0.001; // Minimum improvement in distance to keep the simulation going
 
-void TryStartSimulation(entt::registry& registry, Vec3& shooterPosition, double bulletMass, double muzzleVelocity)
+void TryStartSimulation(entt::registry& registry, const Vec3& shooterPosition, double bulletMass, double muzzleVelocity)
 {
 	// Get a view of entities with ActiveBullet components.
 	auto activeBulletsView = registry.view<ActiveBullet>();
@@ -149,13 +149,9 @@ void IterateSimulation(entt::registry& registry)
 	// Get the simulation data.
 	SimulationData& simulationData = registry.get<SimulationData>(simulationDataView.front());
 
-
-
-	std::cout << "Uhel: " << simulationData.bestAngle << " stupnu, "
-		<< "lo: " << simulationData.lowAngle << "->" << std::max(simulationData.lowAngle, simulationData.bestAngle - simulationData.angleStep) << ", "
-		<< "hi: " << simulationData.highAngle << "->" << std::min(simulationData.highAngle, simulationData.bestAngle + simulationData.angleStep) << std::endl;
-
-
+	//std::cout << "Uhel: " << simulationData.bestAngle << " stupnu, "
+	//	<< "lo: " << simulationData.lowAngle << "->" << std::max(simulationData.lowAngle, simulationData.bestAngle - simulationData.angleStep) << ", "
+	//	<< "hi: " << simulationData.highAngle << "->" << std::min(simulationData.highAngle, simulationData.bestAngle + simulationData.angleStep) << std::endl;
 
 	// Set new simulation boundaries.
 	simulationData.lowAngle = std::max(simulationData.lowAngle, simulationData.bestAngle - simulationData.angleStep);

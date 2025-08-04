@@ -1,17 +1,7 @@
-﻿#include <Systems/Simulation/SimulationSystem.hpp>
-#include <entt/entity/registry.hpp>
-#include <Components/SimulationData.hpp>
+﻿#include <iostream>
 #include <Core/Maths.hpp>
-#include <Systems/VelocityApplier/VelocityApplierSystem.hpp>
-#include <Systems/BulletEndCondition/BulletEndConditionSystem.hpp>
-#include <Systems/DeadBulletSolver/DeadBulletSolverSystem.hpp>
-#include <iostream>
-#include <Components/ActiveSimulation.hpp>
-#include <Systems/Gravity/GravitySystem.hpp>
-#include <Systems/Drag/DragForceSystem.hpp>
-#include <Systems/Physics/PhysicsSystem.hpp>
-#include <Systems/TargetMinDistanceCheck/TargetMinDistanceCheckSystem.hpp>
 #include <regex>
+#include <Simulator.hpp>
 
 bool parseVec3(const std::string& str, Vec3& vec) {
     std::regex vec3Regex(R"(^\s*([-+]?\d*\.?\d+),([-+]?\d*\.?\d+),([-+]?\d*\.?\d+)\s*$)");
@@ -101,64 +91,45 @@ int main(int argc, char* argv[])
 	// Simulation Initialization
     //////////////////////////////////////////////////////////////////////////////////////////
 
-	Vec3 toTarget = targetPosition - shooterPosition;
+	double bestAngle;
+	double minDistance;
+	bool success = RunSimulation(
+		shooterPosition,
+		targetPosition,
+		muzzleVelocity,
+		bulletMass,
+		dt,
+		bestAngle,
+		minDistance);
 
-	double targetHorizontalDistanceSqrt = toTarget.x * toTarget.x + toTarget.z * toTarget.z;
+	std::cout.precision(8); // Set precision for floating-point output
+	std::cout << std::fixed; // Use fixed-point notation for better readability
 
-	// Create an entity registry.
-	entt::registry registry;
+	std::cout << "With following parameters:\n"
+		<< "Shooter position: (" << shooterPosition.x << ", " << shooterPosition.y << ", " << shooterPosition.z << ")\n"
+		<< "Target position: (" << targetPosition.x << ", " << targetPosition.y << ", " << targetPosition.z << ")\n"
+		<< "Muzzle velocity: " << muzzleVelocity << " m/s\n"
+		<< "Bullet mass: " << bulletMass << " kg\n"
+		<< "Time step: " << dt << " seconds\n\n";
 
-    double lowAngle =
-        std::atan2(toTarget.y, std::sqrt(targetHorizontalDistanceSqrt))
-        * 180.0
-        / M_PI;
-
-	// Initialize the simulation data.
-    const auto simulationDataEntity = registry.create();
-    registry.emplace<SimulationData>(
-        simulationDataEntity,
-		std::atan2(toTarget.z, toTarget.x) * 180.0 / M_PI, // Theta angle in degrees
-        lowAngle,
-        90.0, // High angle
-        5.0, // Angle step
-		lowAngle, // Low angle as the initial best angle
-		std::numeric_limits<double>::max(), // Minimum distance to the target
-		std::numeric_limits<double>::max()); // Previous minimum distance to the target
-
-	const auto activeSimulationEntity = registry.create();
-    registry.emplace<ActiveSimulation>(activeSimulationEntity, true); // Start the simulation as active
-
-    while (true)
-    {
-        TryStartSimulation(registry, shooterPosition, bulletMass, muzzleVelocity);
-		ApplyPhysics(registry, dt);
-		ApplyVelocity(registry, dt);
-        CheckBulletEndCondition(registry, shooterPosition, targetPosition, targetHorizontalDistanceSqrt);
-		CheckTargetMinDistance(registry, targetPosition);
-		SolveDeadBullets(registry);
-		CheckSimulationEndCondition(registry);
-
-		// Check if the simulation is still active.
-		if (!GetIsSimulationActive(registry))
-			break; // Exit the loop if the simulation is no longer active.
-
-		// Iterate the simulation.
-		IterateSimulation(registry);
-    }
-
-	auto simulationDataView = registry.view<SimulationData>();
-
-	if (simulationDataView.empty())
-	{
-		std::cerr << "Error: No simulation data available." << std::endl;
-		return 1;
+	if (success) {
+		std::cout << "Simulation completed successfully.\n";
+		std::cout << "- Best angle: " << bestAngle << " degrees\n";
+		std::cout << "- Minimum distance to target: " << minDistance << " meters\n";
+	}
+	else {
+		std::cout << "Simulation failed to find a valid solution.\n";
 	}
 
-	const SimulationData& simulationData = registry.get<SimulationData>(simulationDataView.front());
+	std::cout << std::endl;
 
-	std::cout << "Nejlepsi uhel: theta = " << simulationData.theta
-		<< ", phi = " << simulationData.bestAngle << " stupnu\n";
-	std::cout << "Nejblizsi vzdalenost k cili: " << simulationData.minDistance << " m\n";
+	PrintBulletTrajectory(
+		shooterPosition,
+		targetPosition,
+		bestAngle,
+		muzzleVelocity,
+		bulletMass,
+		dt);
 
 	return 0;
 }
