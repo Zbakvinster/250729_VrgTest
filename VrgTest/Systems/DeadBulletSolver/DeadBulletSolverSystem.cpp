@@ -22,18 +22,6 @@ void SolveDeadBullets(entt::registry& registry)
 	if (!activeBulletsView.empty())
 		return;
 
-	// Get SimulationDataView.
-	auto simulationDataView = registry.view<SimulationData>();
-	if (simulationDataView.empty())
-	{
-		// Error log: No simulation data available.
-		std::cerr << "Error: No simulation data available." << std::endl;
-		return;
-	}
-
-	// Get the simulation data.
-	SimulationData& simulationData = registry.get<SimulationData>(simulationDataView.front());
-
 	// Check if there are any dead bullets to process.
 	auto deadBulletsView = registry.view<DeadBullet, Angle, MinDistance>();
 
@@ -46,14 +34,6 @@ void SolveDeadBullets(entt::registry& registry)
 		const Angle& angle,
 		const MinDistance& minDistance)
 	{
-		//// Check if the bullet reached better distance than the current best.
-		//if (minDistance.value < simulationData.minDistance)
-		//{
-		//	// Update the simulation data with the new best angle and distance.
-		//	simulationData.minDistance = minDistance.value;
-		//	simulationData.bestAngle = angle.value;
-		//}
-
 		deadBulletsInfo.push_back({angle.value, minDistance.value});
 
 		// Destroy the dead bullet entity - it is no longer needed.
@@ -67,6 +47,18 @@ void SolveDeadBullets(entt::registry& registry)
 		[](const MinDistanceInfo& a, const MinDistanceInfo& b) {
 			return a.angle < b.angle;
 	});
+
+	// Get SimulationDataView.
+	auto simulationDataView = registry.view<SimulationData>();
+	if (simulationDataView.empty())
+	{
+		// Error log: No simulation data available.
+		std::cerr << "Error: No simulation data available." << std::endl;
+		return;
+	}
+
+	// Get the simulation data.
+	SimulationData& simulationData = registry.get<SimulationData>(simulationDataView.front());
 
 	// Iterate over the sorted deadBulletsInfo to find the best angle and distance.
 	double bestAngle = simulationData.bestAngle;

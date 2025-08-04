@@ -22,6 +22,7 @@ struct Vec3 {
     Vec3 operator/(double s) const { return { x / s, y / s, z / s }; }
 	Vec3 operator/=(const Vec3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 	Vec3 operator/=(double s) { x /= s; y /= s; z /= s; return *this; }
+	bool operator==(const Vec3& v) const { return x == v.x && y == v.y && z == v.z; }
 
     double lengthSqrt() const { return x * x + y * y + z * z; }
 	double length() const { return std::sqrt(lengthSqrt()); }

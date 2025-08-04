@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\LinkedSources">
+      <UniqueIdentifier>{57eee7d8-35b7-48af-9b1f-96ba134dc4d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test_math.cpp">
@@ -20,6 +23,57 @@
     </ClCompile>
     <ClCompile Include="Catch2\catch_amalgamated.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test_BulletEndConditionSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\BulletEndCondition\BulletEndConditionSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_DeadBulletSolverSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\DeadBulletSolver\DeadBulletSolverSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_PhysicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\Physics\PhysicsSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_PrintSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\Print\PrintSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_SimulationSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\Simulation\SimulationSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_TargetMinDistanceCheckSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\TargetMinDistanceCheck\TargetMinDistanceCheckSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_VelocityApplierSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Systems\VelocityApplier\VelocityApplierSystem.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
+    </ClCompile>
+    <ClCompile Include="test_simulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VrgTest\Simulator.cpp">
+      <Filter>Source Files\LinkedSources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

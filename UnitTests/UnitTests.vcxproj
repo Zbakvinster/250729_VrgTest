@@ -19,8 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\VrgTest\Simulator.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\BulletEndCondition\BulletEndConditionSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\DeadBulletSolver\DeadBulletSolverSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\Physics\PhysicsSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\Print\PrintSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\Simulation\SimulationSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\TargetMinDistanceCheck\TargetMinDistanceCheckSystem.cpp" />
+    <ClCompile Include="..\VrgTest\Systems\VelocityApplier\VelocityApplierSystem.cpp" />
     <ClCompile Include="Catch2\catch_amalgamated.cpp" />
+    <ClCompile Include="test_BulletEndConditionSystem.cpp" />
+    <ClCompile Include="test_DeadBulletSolverSystem.cpp" />
+    <ClCompile Include="test_main.cpp" />
     <ClCompile Include="test_math.cpp" />
+    <ClCompile Include="test_PhysicsSystem.cpp" />
+    <ClCompile Include="test_PrintSystem.cpp" />
+    <ClCompile Include="test_SimulationSystem.cpp" />
+    <ClCompile Include="test_simulator.cpp" />
+    <ClCompile Include="test_TargetMinDistanceCheckSystem.cpp" />
+    <ClCompile Include="test_VelocityApplierSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Catch2\catch_amalgamated.hpp" />
@@ -111,7 +128,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\GIT\250729_VrgTest\UnitTests\Catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GIT\250729_VrgTest\VrgTest;D:\GIT\250729_VrgTest\UnitTests\Catch2;D:\GIT\250729_VrgTest\entt-master\entt-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
