@@ -25,12 +25,6 @@
     <Filter Include="Source Files\Systems\VelocityApplier">
       <UniqueIdentifier>{f7714325-5de9-46e6-9321-8afe2a1e5b9a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Systems\Gravity">
-      <UniqueIdentifier>{f42324e5-bf75-4a0e-bd0b-c897b0a09f4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Systems\Drag">
-      <UniqueIdentifier>{956384d0-03a2-40eb-a986-d269c98ccd3c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Systems\Simulation">
       <UniqueIdentifier>{e93c9218-01ba-478b-bb1c-666cd3918dfe}</UniqueIdentifier>
     </Filter>
@@ -54,14 +48,8 @@
     <ClCompile Include="VrgTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Systems\Gravity\GravitySystem.cpp">
-      <Filter>Source Files\Systems\Gravity</Filter>
-    </ClCompile>
     <ClCompile Include="Systems\VelocityApplier\VelocityApplierSystem.cpp">
       <Filter>Source Files\Systems\VelocityApplier</Filter>
-    </ClCompile>
-    <ClCompile Include="Systems\Drag\DragForceSystem.cpp">
-      <Filter>Source Files\Systems\Drag</Filter>
     </ClCompile>
     <ClCompile Include="Systems\Simulation\SimulationSystem.cpp">
       <Filter>Source Files\Systems\Simulation</Filter>
@@ -98,14 +86,8 @@
     <ClInclude Include="Components\Velocity.hpp">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Systems\Gravity\GravitySystem.hpp">
-      <Filter>Source Files\Systems\Gravity</Filter>
-    </ClInclude>
     <ClInclude Include="Systems\VelocityApplier\VelocityApplierSystem.hpp">
       <Filter>Source Files\Systems\VelocityApplier</Filter>
-    </ClInclude>
-    <ClInclude Include="Systems\Drag\DragForceSystem.hpp">
-      <Filter>Source Files\Systems\Drag</Filter>
     </ClInclude>
     <ClInclude Include="Components\ActiveBullet.hpp">
       <Filter>Source Files\Components</Filter>

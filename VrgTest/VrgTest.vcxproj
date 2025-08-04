@@ -132,8 +132,6 @@
     <ClCompile Include="Simulator.cpp" />
     <ClCompile Include="Systems\BulletEndCondition\BulletEndConditionSystem.cpp" />
     <ClCompile Include="Systems\DeadBulletSolver\DeadBulletSolverSystem.cpp" />
-    <ClCompile Include="Systems\Drag\DragForceSystem.cpp" />
-    <ClCompile Include="Systems\Gravity\GravitySystem.cpp" />
     <ClCompile Include="Systems\Physics\PhysicsSystem.cpp" />
     <ClCompile Include="Systems\Print\PrintSystem.cpp" />
     <ClCompile Include="Systems\Simulation\SimulationSystem.cpp" />
@@ -155,8 +153,6 @@
     <ClInclude Include="Simulator.hpp" />
     <ClInclude Include="Systems\BulletEndCondition\BulletEndConditionSystem.hpp" />
     <ClInclude Include="Systems\DeadBulletSolver\DeadBulletSolverSystem.hpp" />
-    <ClInclude Include="Systems\Drag\DragForceSystem.hpp" />
-    <ClInclude Include="Systems\Gravity\GravitySystem.hpp" />
     <ClInclude Include="Systems\Physics\PhysicsSystem.hpp" />
     <ClInclude Include="Systems\Print\PrintSystem.hpp" />
     <ClInclude Include="Systems\Simulation\SimulationSystem.hpp" />
